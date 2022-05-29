@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>hexo更新碰到的问题 | Wake Me Up</title>
+  <meta name="author" content="Stan">
+  
+  <meta name="description" content="今天更新了下hexo和theme，但deploy之后访问博客首页出现了这个:
+123456&amp;lt;%- partial(&amp;#x27;_partial/head&amp;#x27;) %&amp;gt;&amp;lt;%- partial(&amp;#x27;_partial/header&amp;#x27;) %&amp;gt;&amp;lt;%- bo">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="hexo更新碰到的问题"/>
+  <meta property="og:site_name" content="Wake Me Up"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Wake Me Up" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Wake Me Up</a></h1>
+  <h2 class="subtitle">A Greenday’s song started this blog</h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+      <li><a href="/atom.xml">RSS</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-09-14T08:13:46.000Z"><a href="/2014/09/14/problem-when-updating-hexo/">Sep 14 2014</a></time>
+      
+      
+  
+    <h1 class="title">hexo更新碰到的问题</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>今天更新了下hexo和theme，但deploy之后访问博客首页出现了这个:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;%- partial(&#x27;_partial/head&#x27;) %&gt;</span><br><span class="line">&lt;%- partial(&#x27;_partial/header&#x27;) %&gt;</span><br><span class="line">&lt;%- body %&gt;</span><br><span class="line">&lt;%- partial(&#x27;_partial/sidebar&#x27;) %&gt;</span><br><span class="line">&lt;%- partial(&#x27;_partial/footer&#x27;) %&gt;</span><br><span class="line">&lt;%- partial(&#x27;_partial/after_footer&#x27;) %&gt; </span><br></pre></td></tr></table></figure>
+<p>一下子不知道该怎么办了，好在有google，搜一下，发现是这个问题“<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues/632">更新2.6.0后generate生成页面错误</a>”。</p>
+<p>所以只要在blog根目录下，用下面的命令更新这三个组件，然后重新generate/deploy即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-renderer-ejs --save</span><br><span class="line">$ npm install hexo-renderer-stylus --save</span><br><span class="line">$ npm install hexo-renderer-marked --save</span><br></pre></td></tr></table></figure>
+<p>真是google在手，天下我有啊！</p>
+<p>2014-09-14 Update:</p>
+<p>发现了另外一个问题，就是”About”页面没有任何页面样式，搜了一下，发现是这个问题“<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues/663">更新Hexo后(2.6.1)，page页面样式丢失</a>”，还有这个“<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues/650">用npm更新过hexo的版本的话,可能导致一点小问题</a>”。问题不大，很好解决。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/技巧/">技巧</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/hexo/">hexo</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2129823"></script>
+<!-- UY END -->
+
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Books/">Books</a><small>46</small></li>
+  
+    <li><a href="/categories/发生的事/">发生的事</a><small>6</small></li>
+  
+    <li><a href="/categories/娱乐/">娱乐</a><small>4</small></li>
+  
+    <li><a href="/categories/技巧/">技巧</a><small>5</small></li>
+  
+    <li><a href="/categories/略知所云/">略知所云</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2022/05/29/book-list-may-2022/">book-list-may-2022</a>
+      </li>
+    
+      <li>
+        <a href="/2022/05/26/hello-world/">Hello World</a>
+      </li>
+    
+      <li>
+        <a href="/2022/05/22/book-list-jan-to-aprl-2022/">一月至四月书单</a>
+      </li>
+    
+      <li>
+        <a href="/2022/01/17/summary-of-2021/">2021年终总结</a>
+      </li>
+    
+      <li>
+        <a href="/2022/01/09/book-list-oct-to-dec-2021/">十月至十二月书单</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/hexo/" style="font-size: 16.67px;">hexo</a> <a href="/tags/%E5%8A%A8%E6%BC%AB/" style="font-size: 13.33px;">动漫</a> <a href="/tags/%E6%97%B6%E9%97%BB/" style="font-size: 10px;">时闻</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 20px;">生活</a> <a href="/tags/%E7%94%B5%E5%BD%B1/" style="font-size: 13.33px;">电影</a> <a href="/tags/%E7%AC%AC%E4%B8%80%E6%AC%A1/" style="font-size: 20px;">第一次</a> <a href="/tags/%E7%BF%BB%E5%A2%99/" style="font-size: 10px;">翻墙</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2022 Stan
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src=“//lib.sinaapp.com/js/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
